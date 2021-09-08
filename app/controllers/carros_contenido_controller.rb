@@ -1,0 +1,3 @@
+class CarrosContenidoController < ApplicationController
+
+end

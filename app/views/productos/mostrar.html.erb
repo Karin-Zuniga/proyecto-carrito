@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-lg-6 col-md-10 col-sm-12">
+    
+        <!-- nuevo 🌟 -->
+        <div class="card w-75 m-auto">
+            <div class="row justify-content-center">
+                <% @producto.imagenes.each do |imagen| %>
+                    <div class="<%= @columnas %>">
+                            <%= image_tag imagen, class: 'card-img-top' %>
+                            <% "productos/:id/imagenes/#{imagen.id}" %>
+                    </div>
+                <% end %>
+            </div> <!-- Imágenes 📷 -->
+
+            <div class="card-body">
+                <p> Fotos: <%= @producto.imagenes.count %>/4 </p>
+                <h5 class="card-title"> <%= @producto.nombre %> </h5>
+                <p class="card-text">
+                    <%= @producto.descripcion %>
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%= @producto.precio %> CLP</li>
+                <li class="list-group-item"><%= @producto.cantidad %> diponibles</li>
+            </ul>
+
+            <div class="card-body">
+                <%= link_to 'Editar', editar_producto_path(@producto), class: 'card-link' %>
+                <%= link_to 'Eliminar', producto_path(@producto),
+                    class: 'card-link',
+                    method: :delete, 
+                    data: {confirm: '¿Está seguro?'} %>
+            </div>
+        </div>
+
+    </div>
+</div>

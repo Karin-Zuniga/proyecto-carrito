@@ -1,0 +1,23 @@
+<h2>¡Hola! <%= @datos_envio_correo.nombre %></h2>
+<h3>Tu pedido a sido enviado y lo estamos procesando 📦</h3>
+
+<h1>CÓDIGO DE PEDIDO <%= @pedido_correo.codigo %></h1>
+<h2>TOTAL <%= @pedido_correo.total %></h2>
+
+<p>Los datos del pedido_correo son los siguientes:</p>
+<ul>
+    <li>Nombre:     <%= @datos_envio_correo.nombre %>    </li>
+    <li>Correo:     <%= @datos_envio_correo.correo %>    </li>
+    <li>Teléfono:   <%= @datos_envio_correo.telefono %>  </li>
+    <li>Dirección:  <%= @datos_envio_correo.direccion %> </li>
+    <li>Destino:    <%= @pedido_correo.destino.nombre %> </li>
+</ul>
+<h4>Los productos que ordenaste son:</h4>
+<ul>
+    <% @pedido_correo.detalles_pedidos.each do |detalle| %>
+        <li><%= detalle.producto.nombre %> | <%= detalle.producto.precio %> | <%= detalle.cantidad %> </li>
+    <% end %>
+</ul>
+
+<h5>Gracias por confiar en nosotros</h5>
+<h5>💰🤑💸</h5>

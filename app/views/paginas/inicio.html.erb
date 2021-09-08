@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <%= render 'header' %>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="display-4 titulo-seccion">Destacados</h1>
+        <% for producto in @todos_los_productos[0..2] do %>
+            <%= render 'tarjetas_productos', producto: producto %>
+            
+            
+        <% end %>
+    </div>
+
+    <div class="row ">
+        <h1 class="display-4"> <br><br> Productos</h1>
+        <% @todos_los_productos.each  do |producto| %>
+            <%= render 'tarjetas_productos', producto: producto %>
+            
+            
+        <% end %>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

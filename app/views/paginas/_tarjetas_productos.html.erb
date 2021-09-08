@@ -1,0 +1,18 @@
+<div class="col">
+    <div class='card contenedor' style="width: 18rem">
+        <%= image_tag producto.imagenes.first, class: 'card-img-top', style: "height: 18rem" %>
+        <div class="card-body">
+            <h6 class="card-tittle"> <%= producto.nombre %></h6>
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item" > 
+                    <%= producto.precio.to_s[0..-3] %> CLP</span>
+
+                    <%= link_to agregar_producto_path(producto), method: :post do %>
+                        <i class="bi bi-cart-plus-fill"></i>
+                    <% end %>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

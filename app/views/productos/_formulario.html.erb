@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col-6 contenedor-formulario">
+        
+        <%= form_with(model:producto) do |formulario| %>
+        
+            <div class="mb-3">
+                    <%= formulario.label :nombre, class: 'form-label' %>
+                    <%= formulario.text_field :nombre, class: 'form-control' %>
+                    <% if producto.errors[:nombre].any? %>
+                        <div style="color: red;">
+                            <%= producto.errors[:nombre].first %>
+                        </div>
+                    <% end %>
+            </div>
+
+            <div class="mb-3">
+                <%= formulario.label :precio, class: 'form-label' %>
+                <%= formulario.text_field :precio, class: 'form-control' %>
+                <% if producto.errors[:precio].any? %>
+                    <div style="color: red;">
+                        <%= producto.errors[:precio].first %>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="mb-3">
+                <%= formulario.label :descripcion, class: 'form-label' %>
+                <%= formulario.text_field :descripcion, class: 'form-control' %>
+                <% if producto.errors[:descripcion].any? %>
+                     <div style="color: red;">
+                        <%= producto.errors[:descripcion].first %>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="mb-3">
+                <%= formulario.label :cantidad, class: 'form-label' %>
+                <%= formulario.text_field :cantidad, class: 'form-control' %>
+                <% if producto.errors[:cantidad].any? %>
+                    <div style="color: red;">
+                        <%= producto.errors[:cantidad].first %>
+                    </div>
+                <% end %>
+            </div>  
+
+            <div class="mb-3">
+                <%= formulario.label :categoria_id, class: 'form-label' %>
+                
+                <% if producto.categoria %>
+                    <%= formulario.select :categoria_id, options_from_collection_for_select(categorias, :id, :categoria, producto.categoria), {include_blank: 'Elige una categoria'},{class: 'form-select'} %>
+                <% else %>
+                    <%= formulario.select :categoria_id, options_from_collection_for_select(categorias, :id, :categoria), {include_blank: 'Elige una categoria'},{class: 'form-select'} %>
+                <% end %>
+                
+                
+                <% if producto.errors[:categoria_id].any? %>
+                    <div style="color: red;">
+                        <%= producto.errors[:categoria_id].first.full_message %>
+                    </div>
+                <% end %>
+            </div> 
+
+            <% if producto.imagenes.attached? %>
+                <%= render 'lista_fotos', producto: producto %>
+            <% end %>
+
+            <div class="mb-3">
+                <%= formulario.label :imagenes, class: 'form-label' %>
+                <%= formulario.file_field :imagenes, multiple: true, class: "form-control", accept: '.jpg, .png, .jpeg' %>
+                <% if producto.errors[:imagenes].any? %>
+                    <div style="color: red;">
+                        <%= producto.errors[:imagenes].first %>
+                    </div>
+                <% end %>
+            </div>
+
+            <%= formulario.submit class: 'btn btn-primary' do %>
+            <% end %>
+        <% end %>
+    </div>
+</div>

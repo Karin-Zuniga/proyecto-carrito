@@ -1,0 +1,16 @@
+
+<div class="row">
+    <div class="col-6 contenedor-formulario">
+        <%= form_with(model:categoria) do |formulario| %>
+            <%= formulario.label :categoria,  class: "form-label" %>
+            <%= formulario.text_field :categoria, class: "form-control", autofocus: 'autofocus' %>
+            <% if categoria.errors[:categoria].any? %>
+                <%= categoria.errors[:categoria].first %>
+            <% end %>
+            <%= formulario.submit(class: 'btn btn-primary') do %>
+
+            <% end %>
+        <% end %>
+
+    </div>
+</div>

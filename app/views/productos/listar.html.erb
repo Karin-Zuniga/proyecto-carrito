@@ -1,0 +1,45 @@
+<h1>Productos registrados</h1>
+<%= link_to 'Nuevo producto' , nuevo_producto_path %>
+<table class="table">
+    <tr>
+    
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Categoria</th>
+        <th>Acciones</th>
+    </tr>
+    <% @productos.each do |producto| %>
+        <tr>
+            <td>
+                <% if producto.imagenes.attached? %>
+                    <%= image_tag producto.imagenes.first, style: "width: 25%" %>
+                <% else %>
+                    No hay fotos registradas
+                <% end %>
+            </td>
+              
+            
+            <td><%= link_to producto.nombre, producto_path(producto) %></td>
+            <td><%= producto.precio %></td>
+            <td><%= producto.cantidad %></td>
+            <td><%= producto.categoria.categoria %></td>
+            <td>
+
+                        <%= link_to editar_producto_path(producto), class: "btn btn-warning boton-editar" do %>
+                            <i class="bi bi-pencil-fill"></i>
+                        <% end %>
+                        <%= link_to producto_path(producto), method: :delete, data: { confirm: '¿Quieres eliminar el producto?' }, class: "btn btn-danger"  do %>
+                            <i class="bi bi-trash-fill"></i>                  
+                        <% end %>
+                    </div>
+                </div>
+
+
+                
+            
+            </td>
+        </tr>
+    <% end %>
+</table>
