@@ -7,7 +7,7 @@ set :application, "carrito"
 set :repo_url, "git@github.com:Karin-Zuniga/proyecto-carrito.git"
 
 # Default branch is :master
-set :branch, `git rev-parse --abbrev-ref MAIN`.chomp
+set :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/ubuntu/#{fetch :application}"
