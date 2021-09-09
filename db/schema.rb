@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_01_195557) do
+ActiveRecord::Schema.define(version: 2021_09_09_163335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,12 @@ ActiveRecord::Schema.define(version: 2021_09_01_195557) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "estados_productos", force: :cascade do |t|
+    t.string "estado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pedidos", force: :cascade do |t|
     t.string "codigo"
     t.integer "total"
@@ -118,7 +124,9 @@ ActiveRecord::Schema.define(version: 2021_09_01_195557) do
     t.bigint "categoria_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "estados_producto_id"
     t.index ["categoria_id"], name: "index_productos_on_categoria_id"
+    t.index ["estados_producto_id"], name: "index_productos_on_estados_producto_id"
   end
 
   create_table "regiones", force: :cascade do |t|
@@ -157,6 +165,7 @@ ActiveRecord::Schema.define(version: 2021_09_01_195557) do
   add_foreign_key "pedidos", "destinos"
   add_foreign_key "pedidos", "estados_pedidos"
   add_foreign_key "productos", "categorias"
+  add_foreign_key "productos", "estados_productos"
   add_foreign_key "ventas", "pedidos"
   add_foreign_key "ventas", "tipos_pagos"
 end
