@@ -1,0 +1,8 @@
+<h1>Productos registrados</h1>
+<%= link_to 'Nuevo producto' , admin_nuevo_producto_path %>
+
+<h2>Activos</h2>
+<%= render 'tabla_productos', productos: @productos_activos %>
+
+<h2>Inactivos</h2>
+<%= render 'tabla_productos', productos: @productos_inactivos %>

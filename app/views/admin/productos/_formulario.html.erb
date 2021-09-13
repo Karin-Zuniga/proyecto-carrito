@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-6 contenedor-formulario">
         
-        <%= form_with(model:producto) do |formulario| %>
+        <%= form_with(model: [:admin, producto]) do |formulario| %>
         
             <div class="mb-3">
                     <%= formulario.label :nombre, class: 'form-label' %>
@@ -60,12 +60,18 @@
                 <% end %>
             </div> 
 
+            <!-- Estado  -->
             <div class="form-switch mb-3" style="padding-left: 0">
-               <%= formulario.label :estados_producto_id, "Estado", class: 'form-label' %>
-                <% if producto.estados_producto.estado.eql? 'activo' %>
+                <%= formulario.label :estados_producto_id, "Estado", class: 'form-label' %>                
+                <% if producto.estados_producto %> <!-- El estado existe? -->
+                    <!-- Editar un producto -->
+                    <% if producto.estados_producto.estado.eql? 'activo' %>                  
+                        <%= formulario.check_box :estados_producto_id, class: 'form-check-input', checked: true, style: 'display:block; margin-left: 0;' %>
+                    <% else %>                    
+                        <%= formulario.check_box :estados_producto_id, class: 'form-check-input', style: 'display:block;margin-left: 0;'%>
+                    <% end %>
+                <% else %> <!-- Crear un producto -->
                     <%= formulario.check_box :estados_producto_id, class: 'form-check-input', checked: true, style: 'display:block; margin-left: 0;' %>
-                <% else %>               
-                    <%= formulario.check_box :estados_producto_id, class: 'form-check-input', style: 'display:block;margin-left: 0;' %>   
                 <% end %>
             </div>
 

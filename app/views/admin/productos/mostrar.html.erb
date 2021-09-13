@@ -13,7 +13,17 @@
             </div> <!-- Imágenes 📷 -->
 
             <div class="card-body">
-                <p> Fotos: <%= @producto.imagenes.count %>/4 </p>
+                <p> Fotos: <%= @producto.imagenes.count %>/4 
+
+                <% if @producto.estados_producto.estado.eql? 'activo' %>
+                    <span class="badge rounded-pill bg-success">activo</span>
+                  
+                <% else %>
+                    <span class="badge rounded-pill bg-secondary">inactivo</span>
+                  
+                <% end %>
+                </p>
+                
                 <h5 class="card-title"> <%= @producto.nombre %> </h5>
                 <p class="card-text">
                     <%= @producto.descripcion %>
@@ -25,11 +35,8 @@
             </ul>
 
             <div class="card-body">
-                <%= link_to 'Editar', editar_producto_path(@producto), class: 'card-link' %>
-                <%= link_to 'Eliminar', producto_path(@producto),
-                    class: 'card-link',
-                    method: :delete, 
-                    data: {confirm: '¿Está seguro?'} %>
+                <%= link_to 'Editar', admin_editar_producto_path(@producto), class: 'btn btn-warning' %>
+                
             </div>
         </div>
 

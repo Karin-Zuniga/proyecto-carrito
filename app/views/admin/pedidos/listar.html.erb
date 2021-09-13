@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col">Código</div>
+    <div class="col">Fecha</div>
+    <div class="col">Total</div>
+</div>
+<% @pedidos.each do |pedido| %>
+    <div class="row">
+        <div class="col"> <%= pedido.codigo %> </div>
+        <div class="col"> <%= pedido.created_at.strftime("%d/%m/%Y") %> </div>
+        <div class="col"> <%= pedido.total %> </div>
+    </div>
+<% end %>

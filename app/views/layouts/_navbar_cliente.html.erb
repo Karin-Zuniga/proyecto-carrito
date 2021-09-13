@@ -17,7 +17,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/carrito"><i class="bi bi-cart4"></i>Carrito</a>
-          <span class="badge bg-secondary"> <%= @carro.productos.count %> </span>
+          <span class="badge bg-secondary"> <%= @carro.carros_contenidos.map{ |p| p.cantidad }.sum %>  </span>
         </li>
       </ul>
     </div>

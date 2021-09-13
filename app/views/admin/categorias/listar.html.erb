@@ -1,6 +1,6 @@
 <h1 class="titulo-seccion">Categorias</h1>
 
-<%= link_to nueva_categoria_path, class: "btn btn-success boton-crear-derecha" do %>
+<%= link_to admin_nueva_categoria_path, class: "btn btn-success boton-crear-derecha" do %>
     <i class="bi bi-plus-circle-fill"></i>
     Crear nueva categoria
 <% end %>
@@ -22,10 +22,10 @@
     <div class="row justify-content-between fila">
         <div class="col-4"><%= categoria.categoria %></div>
         <div class="col-4">
-            <%= link_to editar_categoria_path(categoria), class: "btn btn-warning boton-editar" do %>
+            <%= link_to admin_editar_categoria_path(categoria), class: "btn btn-warning boton-editar" do %>
                 <i class="bi bi-pencil-fill"></i>
             <% end %>
-            <%= link_to categoria_path(categoria), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class: "btn btn-danger"  do %>
+            <%= link_to admin_categoria_path(categoria), method: :delete, data: { confirm: '¿Quieres eliminar la categoria?' }, class: "btn btn-danger"  do %>
                 <i class="bi bi-trash-fill"></i>                  
             <% end %>
         </div>
