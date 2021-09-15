@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-10">
+        <h2>
+            EDITAR PEDIDO <%= @pedido.codigo %> 📦
+        </h2>    
+    </div>
+    <div class="col-2 text-end">
+        <%= link_to "Volver", admin_pedido_path(@pedido), class: 'btn btn-secondary' %>
+    </div>
+</div>
+
+<%= render 'formulario_datos_envio', datos_pedido: @datos_pedido, destinos: @destinos, estados: @estados  %>
+
+<%= render 'lista_productos', productos: @productos %>

@@ -1,12 +1,24 @@
+<% if flash[:errors] %>
+    <div class="alert alert-warning" role="alert">
+        <%= flash[:errors] %>
+    </div>
+<% end %>
+
 <div class="row">
     <div class="col">Código</div>
     <div class="col">Fecha</div>
     <div class="col">Total</div>
+    <div class="col">Detalles</div>
 </div>
 <% @pedidos.each do |pedido| %>
     <div class="row">
         <div class="col"> <%= pedido.codigo %> </div>
         <div class="col"> <%= pedido.created_at.strftime("%d/%m/%Y") %> </div>
         <div class="col"> <%= pedido.total %> </div>
+        <div class="col"> 
+            <%= link_to "Ver detalles", 
+                admin_pedido_path(pedido), 
+                class: 'btn btn-primary' %>
+        </div>
     </div>
 <% end %>
