@@ -2,7 +2,7 @@ class Admin::PedidosController < Admin::AdminController
     
     include Admin::PedidosHelper
 
-    before_action :asignar_pedido, only: [:mostrar, :editar, :actualizar, :aumentar_cantidad_productos]
+    before_action :asignar_pedido, except: [:listar, :crear, :guardar]
 
     # GET
     def listar
@@ -96,12 +96,12 @@ class Admin::PedidosController < Admin::AdminController
         #TODO analizar si vamos a eliminar el pedido o vamos a cambiar de estado
     end
 
-    def aumentar_cantidad_productos
-        detalles_pedido = @pedido.detalles_pedidos.find(params[:id_producto])
-        detalles_pedido = pedido.cantidad +=1
-        detalles_pedido.save
+    def aumentar_cantidad_producto
+        @detalle_pedido = @pedido.detalles_pedidos.find_by(producto_id: params[:id_producto])
+        @detalle_pedido.cantidad += 1
+        @detalle_pedido.save
 
-        redirect_to :editar
+        redirect_to action: :editar
 
 
     end
@@ -117,9 +117,7 @@ class Admin::PedidosController < Admin::AdminController
         end
 
         redirect_to action: :editar
-        # respond_to do |format|
-        #     format.json { render json: {id: detalle_pedido.producto.id, cantidad: detalle_pedido.cantidad} }
-        # end
+        
     end
 
     # DELETE pedidos/:id/productos/:id_producto/eliminar
@@ -132,7 +130,7 @@ class Admin::PedidosController < Admin::AdminController
 
     private 
     def params_pedidos
-        params.require(:admin_pedidos_helper_pedidos_formulario).permit(:nombre, :correo, :telefono, :direccion, :destino_id)
+        params.require(:admin_pedidos_helper_pedidos_formulario).permit(:nombre, :correo, :telefono, :direccion, :destino_id, :estado_id)
     end
 
     def asignar_pedido

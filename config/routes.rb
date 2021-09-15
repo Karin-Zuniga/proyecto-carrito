@@ -71,8 +71,11 @@ Rails.application.routes.draw do
     patch   'pedidos/:id',  to: 'pedidos#actualizar', as: 'pedidos_helper_pedidos_formulario'
     delete  'pedidos/:id',  to: 'pedidos#eliminar'
   
-  #TODO agregar rutas para disminuir, agregar y eliminar producto
-    put 'pedidos/:id/productos/:id_producto', to: 'pedidos#aumentar_cantidad_productos', as: 'aumentar_producto_pedido'
-  
+    get     'pedidos/:id/productos',                        to: 'pedidos#agregar_producto',             as: 'agregar_producto_pedido'
+    post    'pedidos/:id/productos/:id_producto',           to: 'pedidos#guardar_producto',             as: 'guardar_producto_pedido'
+    put     'pedidos/:id/productos/:id_producto',           to: 'pedidos#aumentar_cantidad_producto',   as: 'aumentar_producto_pedido'
+    delete  'pedidos/:id/productos/:id_producto',           to: 'pedidos#disminuir_cantidad_producto',  as: 'disminuir_producto_pedido'
+    delete  'pedidos/:id/productos/:id_producto/eliminar',  to: 'pedidos#eliminar_producto',            as: 'eliminar_producto_pedido'
+
   end
 end
