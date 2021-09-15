@@ -70,5 +70,9 @@ Rails.application.routes.draw do
     put     'pedidos/:id',  to: 'pedidos#actualizar'
     patch   'pedidos/:id',  to: 'pedidos#actualizar', as: 'pedidos_helper_pedidos_formulario'
     delete  'pedidos/:id',  to: 'pedidos#eliminar'
+  
+  #TODO agregar rutas para disminuir, agregar y eliminar producto
+    put 'pedidos/:id/productos/:id_producto', to: 'pedidos#aumentar_cantidad_productos', as: 'aumentar_producto_pedido'
+  
   end
 end

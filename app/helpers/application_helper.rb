@@ -9,6 +9,16 @@ module ApplicationHelper
             session[:carro_id] = @carro.id
         end
     rescue ActiveRecord::RecordNotFound
-        redirect to root_path
+        redirect_to root_path
     end
+
+
+    def validar_sesion_cliente
+
+    end
+
+    def validar_sesion_admin
+
+    end
+    
 end

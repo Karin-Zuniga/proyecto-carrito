@@ -1,0 +1,72 @@
+<div class="card mt-2">
+    <div class="card-body">
+        <div class="row justify-content-between">
+            <div class="col-4">
+                <h4 class="card-title">
+                    Productos
+                </h4>
+            </div>
+            <div class="col-4 text-end">
+                <%= link_to "Agregar", admin_aumentar_producto_pedido_path(pedido), class: 'btn btn-primary' %>
+            </div>
+        </div>
+        
+        <div class="row  text-center mt-5">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-2">
+                        <strong>
+                            Imágen
+                        </strong>
+                    </div>
+                    <div class="col">
+                        <strong>
+                            Nombre
+                        </strong>
+                    </div>
+                    <div class="col">
+                        <strong>
+                            Precio
+                        </strong>
+                    </div>
+                    <div class="col">
+                        <strong>
+                            Cantidad
+                        </strong>
+                    </div>
+                    <div class="col text-end">
+                        <strong>
+                            Eliminar
+                        </strong>
+                    </div>
+                </div>
+                <% productos.each do |detalle| %>
+                    <div class="row mt-5">
+                        <div class="col-2">
+                            <%= image_tag detalle.producto.imagenes.first, class: 'w-100' %>                
+                        </div>
+                        <div class="col">
+                            <%= detalle.producto.nombre %>                
+                        </div>
+                        <div class="col">
+                            <%= detalle.producto.precio %>                
+                        </div>
+                        <div class="col">
+                            <%= link_to "-", admin_disminuir_producto_pedido_path(detalle.pedido_id, detalle.producto_id), method: :delete, remote: true, class: 'btn btn-secondary' %>
+                            
+                            <span id="cantidad-producto-<%=detalle.producto.id%>"> <%= detalle.cantidad %>                </span>
+                            
+                            <%= link_to "+", admin_aumentar_producto_pedido_path(detalle.pedido_id, detalle.producto_id), method: :put, remote: true, class: 'btn btn-secondary' %>
+                        </div>
+                        <div class="col text-end">
+                            <%= link_to admin_eliminar_producto_pedido_path(detalle.pedido_id, detalle.producto_id), method: :delete, class: 'btn btn-danger' do %>
+                                <i class="bi bi-trash"></i>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+                <!-- MOSTRAR LOS PRODUCTOS -->
+            </div>
+        </div>
+    </div>
+</div>
