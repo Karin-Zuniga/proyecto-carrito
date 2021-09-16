@@ -1,3 +1,9 @@
+<%= link_to "nuevo pedido", admin_pedidos_helper_pedidos_formularios_path, class: 'btn btn-primary',
+method: :post,
+data: {confirm: '¿Quieres crear un nuevo pedido?'}
+%>
+
+
 <% if flash[:errors] %>
     <div class="alert alert-warning" role="alert">
         <%= flash[:errors] %>

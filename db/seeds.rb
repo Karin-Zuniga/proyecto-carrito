@@ -46,4 +46,9 @@ Region.create([
     {nombre: 'Región de Los Lagos'},
     {nombre: 'Región Aysén del General Carlos Ibáñez del Campo'},
     {nombre: 'Región de Magallanes y de la Antártica Chilena'},
+    {nombre: 'Sin región'}
 ])
+
+Destino.create{
+    [ nombre: 'Sin destino', region: Region.find_by(nombre: 'Sin región')]
+}

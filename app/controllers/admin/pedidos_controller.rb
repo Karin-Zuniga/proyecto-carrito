@@ -12,7 +12,7 @@ class Admin::PedidosController < Admin::AdminController
 
     # GET
     def mostrar
-        #TODO mostrar un pedido con todos los productos
+        
     end
     
     def agregar_producto
@@ -21,12 +21,30 @@ class Admin::PedidosController < Admin::AdminController
     # GET
     def crear
         #TODO mostra el formulario para crear un pedido con productos
+        @pedido = Pedido.new
+        @pedido.codigo = SecureRandom.hex(4).upcase
+        @pedido.total = 0
+        @pedido.estados_pedido = EstadosPedido.find_by(estado: 'solicitado')
+        @pedido.destino = Destino.find_by(nombre: 'Sin destino')
+        @pedido.datos_envio = DatosEnvio.create(
+            nombre:     'ingrese nombre',
+            telefono:   'ingrese telefono',
+            direccion:  'ingrese direccion',
+            correo:     'ingrese correo',
+        )
+        
+
+        @pedido.save
+
+        redirect_to admin_editar_pedido_path(@pedido)
+        # @datos_pedido = PedidosFormulario.new
+        # @estados = EstadosPedido.select(:id, :estado).order(estado: :asc)
+        # @destinos = Destino.select(:id, :nombre).order(nombre: :asc)
     end
 
     # GET
     def editar
-        #TODO editar la info de un pedido EXCEPTO el código
-        # @datos_pedido = @pedido.datos_envio
+        
         @datos_pedido = PedidosFormulario.new
         @datos_pedido.id            = @pedido.id
         @datos_pedido.nombre        = @pedido.datos_envio.nombre
@@ -44,8 +62,7 @@ class Admin::PedidosController < Admin::AdminController
     end
 
     # POST
-    def guardar
-    end
+
 
     def guardar_producto
         detalle_pedido = @pedido.detalles_pedidos.find_by(producto_id: params[:id_producto])
