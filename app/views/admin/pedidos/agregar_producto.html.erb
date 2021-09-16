@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-10">
+        <h2>
+            AGREGAR PRODUCTOS AL PEDIDO <%= @pedido.codigo %> 📦
+        </h2>    
+    </div>
+    <div class="col-2 text-end">
+        <%= link_to "Cancelar", admin_editar_pedido_path(@pedido), class: 'btn btn-secondary' %>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <% @todos_los_productos.each  do |producto| %>
+            <div class='card contenedor' style="width: 18rem">
+                <%= image_tag producto.imagenes.first, class: 'card-img-top', style: "height: 18rem" %>
+                <div class="card-body">
+                    <h6 class="card-tittle"> <%= producto.nombre %></h6>
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item" > 
+                            <%= producto.precio.to_s[0..-3] %> CLP</span>
+
+                            <%= link_to admin_guardar_producto_pedido_path(@pedido, producto), method: :post do %>
+                                <i class="bi bi-cart-plus-fill"></i>Agregar
+                            <% end %>
+                        </li>
+                    </ul>
+                </div>
+        <% end %>    </div>
+    </div>
+
+</div>
+

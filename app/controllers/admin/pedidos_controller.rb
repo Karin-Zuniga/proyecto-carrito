@@ -47,6 +47,22 @@ class Admin::PedidosController < Admin::AdminController
     def guardar
     end
 
+    def guardar_producto
+        detalle_pedido = @pedido.detalles_pedidos.find_by(producto_id: params[:id_producto])
+        if detalle_pedido
+            detalle_pedido.cantidad += 1
+        else
+            detalle_pedido = DetallesPedido.new(
+                pedido: @pedido,
+                producto_id: params[:id_producto],
+                cantidad: 1
+            )
+        end
+        detalle_pedido.save
+        
+        redirect_to action: :editar   
+    end
+
      # POST
      def guardar_producto
         detalle_pedido = @pedido.detalles_pedidos.find_by(producto_id: params[:id_producto])
@@ -101,7 +117,7 @@ class Admin::PedidosController < Admin::AdminController
         @detalle_pedido.cantidad += 1
         @detalle_pedido.save
 
-        redirect_to action: :editar
+        redirect_to admin_editar_pedido_path(@pedido)
 
 
     end
