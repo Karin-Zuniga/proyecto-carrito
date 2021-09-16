@@ -123,7 +123,7 @@ Rails.application.configure do
   
   config.action_mailer.smtp_settings = {
     address:              'smtp.office365.com',
-    domain:               'outlook.com',
+    domain:               'karinzuniga.cf',
     port:                 587,
     user_name:            Rails.application.credentials.correo[:correo],
     password:             Rails.application.credentials.correo[:contrasena],
