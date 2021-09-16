@@ -122,12 +122,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-    address:              'smtp.zoho.com',
-    domain:               'karinzuniga.xyz',
-    port:                 465,
+    address:              'smtp.office365.com',
+    domain:               'karinzuniga.cf',
+    port:                 587,
     user_name:            Rails.application.credentials.correo[:correo],
     password:             Rails.application.credentials.correo[:contrasena],
-    authentication:       :plain,
+    authentication:       :login,
     enable_starttls_auto: true
   }
 
