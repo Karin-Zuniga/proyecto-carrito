@@ -52,3 +52,9 @@ Region.create([
 # Destino.create(
 #     [ nombre: 'Sin destino', region: Region.find_by(nombre: 'Sin región')]
 # )
+
+Administrador.create(
+    [{
+        nombre: 'karin', correo: 'karin.zuniga.m@outlook.com', password: Rails.application.credentials.admin[:pass]
+    }]
+)

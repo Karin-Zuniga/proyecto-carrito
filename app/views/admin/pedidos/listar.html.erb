@@ -1,8 +1,12 @@
-<%= link_to "nuevo pedido", admin_pedidos_helper_pedidos_formularios_path, class: 'btn btn-primary',
-method: :post,
-data: {confirm: '¿Quieres crear un nuevo pedido?'}
-%>
 
+<div class="row">
+        <div class="col-10">
+        <%= link_to "nuevo pedido", admin_pedidos_helper_pedidos_formularios_path, class: 'btn btn-primary bi bi-plus',
+        method: :post,
+        data: {confirm: '¿Quieres crear un nuevo pedido?'}
+        %>
+    </div>
+</div>
 
 <% if flash[:errors] %>
     <div class="alert alert-warning" role="alert">
@@ -10,21 +14,37 @@ data: {confirm: '¿Quieres crear un nuevo pedido?'}
     </div>
 <% end %>
 
-<div class="row">
-    <div class="col">Código</div>
-    <div class="col">Fecha</div>
-    <div class="col">Total</div>
-    <div class="col">Detalles</div>
-</div>
-<% @pedidos.each do |pedido| %>
-    <div class="row">
-        <div class="col"> <%= pedido.codigo %> </div>
-        <div class="col"> <%= pedido.created_at.strftime("%d/%m/%Y") %> </div>
-        <div class="col"> <%= pedido.total %> </div>
-        <div class="col"> 
-            <%= link_to "Ver detalles", 
-                admin_pedido_path(pedido), 
-                class: 'btn btn-primary' %>
-        </div>
-    </div>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Total</th>
+      <th scope="col">Detalles</th>
+      <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pedidos.each do |pedido| %>
+        <tr>
+        <th scope="row"><%= pedido.codigo %></th>
+        <td><%= pedido.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= pedido.total %></td>
+        <td><%= link_to "Ver detalles", 
+                    admin_pedido_path(pedido), 
+                    class: 'btn btn-secondary rounded-pill' %>
+        </td>
+        <% if pedido.estados_pedido_id == 1 %>
+            <td style="color:red;" ><%= pedido.estados_pedido.estado %></td>
+            
+        <% elsif pedido.estados_pedido_id == 3%>  
+            <td style="color:#198754;" ><%= pedido.estados_pedido.estado %></td>
+        <% else %>
+            <td><%= pedido.estados_pedido.estado %></td>
+          
+        <% end %>
+        </tr>
+    <% end %>
+
+  </tbody>
+</table>

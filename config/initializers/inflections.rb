@@ -8,7 +8,8 @@ ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.singular /^(ox)en/i, '\1'
     inflect.irregular 'categoria', 'categorias'
     inflect.irregular 'region', 'regiones'
-    inflect.irregular 'venta', 'ventas'
+    inflect.irregular 'region', 'regiones'
+    inflect.irregular 'administrador', 'administradores'
 #   inflect.uncountable %w( fish sheep )
 end
 

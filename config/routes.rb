@@ -21,7 +21,11 @@ Rails.application.routes.draw do
   get   'pedidos',  to: 'pedidos#pagar',    as: 'pagar'
   
   post  'pedidos',  to: 'pedidos#guardar',  as: 'crear_pedido_cliente'
-  
+ 
+  #sesiones
+  post 'sesiones', to:'sesiones#iniciar_sesion', as: 'inicio_sesion'
+  delete  '/sesiones',  to: 'sesiones#cerrar_sesion',  as: 'cerrar_sesion'
+
   #----------------admin---------------------
   namespace :admin do
     #productos
