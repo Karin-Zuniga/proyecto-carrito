@@ -32,7 +32,7 @@ module ApplicationHelper
             @usuario_actual = Administrador.find(session[:usuario_id])
         else
             @usuario_actual = nil
-           # redirect_to root_path
+            redirect_to root_path
         end
 
     rescue ActiveRecord::RecordNotFound
