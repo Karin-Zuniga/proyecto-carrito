@@ -39,13 +39,14 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
   config.action_mailer.smtp_settings = {
-    address:              'smtp.office365.com',
-    domain:               'outlook.com',
+    address:              'smtp.zoho.com',
+ #   domain:               'outlook.com',
     port:                 587,
-    user_name:            Rails.application.credentials.correo[:correo],
-    password:             Rails.application.credentials.correo[:contrasena],
+    user_name:            Rails.application.credentials.envio_mail[:correo],
+    password:             Rails.application.credentials.envio_mail[:password],
     authentication:       :login,
     enable_starttls_auto: true
   }

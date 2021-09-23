@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  #devise_for :usuarios
+  devise_for :usuarios, controllers: {
+    confirmations:  'usuario/confirmations',
+    omniauthable:   'usuarios/omniauth_callbacks',
+    passwords:      'usuarios/passwords',
+    registrations:  'usuarios/registrations',
+    sessions:       'usuarios/sessions',
+    unlocks:        'usuarios/unlocks'
+  }
+  
   # paginas
 #--------------cliente----------------------
   root 'paginas#inicio'

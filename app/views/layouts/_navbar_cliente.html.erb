@@ -18,13 +18,14 @@
             <span class="position-absolute badge rounded-pill bg-secondary"> <%= @carro.carros_contenidos.map{ |p| p.cantidad }.sum %>  </span>
           </li>
           <li class="nav-item dropdown">
-            <% if usuario_ha_iniciado_sesion? %>
+          
+            <% if usuario_signed_in? %>
 
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <%= @usuario_actual.nombre %>
+                <%= current_usuario.nombre %>
               </a><!-- Opción para mostrar el formulario ⏬ -->
               <div class="dropdown-menu bg-secondary p-3" style="border: none;">
-                <%= link_to 'Cerrar sesión', cerrar_sesion_path, class: 'btn btn-warning', method: :delete, data: { confirm: 'está seguro de cerrar sesión?'} %>
+                <%= link_to 'Cerrar sesión', destroy_cliente_session_path, class: 'btn btn-warning', method: :delete, data: { confirm: 'está seguro de cerrar sesión?'} %>
               </div>
 
             <% else %>  

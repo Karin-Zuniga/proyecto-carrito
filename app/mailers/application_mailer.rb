@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: Rails.application.credentials.correo[:correo]
+  default from: Rails.application.credentials.envio_mail[:correo]
   layout 'mailer'
 end

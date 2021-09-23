@@ -21,6 +21,20 @@
           <%=  flash[:error_sesion] %>
         </div>
       <% end %>
+
+      <% if flash[:notice] %>
+        <div class="alert alert-danger">
+          <%= flash[:notice] %>
+        </div>
+        
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+        
+      <% end %>
     </div>
 
     <div class="container contenedor">
