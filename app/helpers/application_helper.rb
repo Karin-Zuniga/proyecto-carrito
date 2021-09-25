@@ -48,5 +48,17 @@ module ApplicationHelper
         end
         
     end
+
+    def sesion_admin
+        if usuario_signed_in?
+
+            if current_usuario.tipo_usuario_id == 2
+                redirect_to root_path
+                
+            end
+        else 
+            :authenticate_usuario!
+        end
+    end
     
 end

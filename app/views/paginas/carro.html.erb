@@ -1,3 +1,4 @@
+
 <h5>Carrito de compras</h5>
 <% @carro.carros_contenidos.each do |contenido_carrito| %>
     <div class="card mb-3">
@@ -39,23 +40,25 @@
         </div>
     </div>
 <% end %>
+<div class="mb-3">
+    <ul>
+        <li class="list-group-item text-end">
+            <strong>
+                Subtotal: <%= @carro.total %> 
+            </strong>
+        </li>
+    </ul>
 
-                <li class="list-group-item text-end">
-                    <strong>
-                        Subtotal: <%= @carro.total %> 
-                    </strong>
-                </li>
-            </ul>
-
+</div>
+    
+<div class="col-2">
+    <div class="card">
+        <div class="card-body">
+            <p><%= @carro.total  %></p>
+            <%= link_to "Continuar con el pedido", nuevo_pedido_path, class: 'btn btn-primary' %>
         </div>
     </div>
-    <div class="col-2">
-        <div class="card">
-            <div class="card-body">
-                <p><%= @carro.total  %></p>
-                <%= link_to "Continuar con el pedido", nuevo_pedido_path, class: 'btn btn-primary' %>
-            </div>
-        </div>
-        
-    </div>
-</div> 
+    
+</div>
+
+ 
